@@ -516,23 +516,21 @@ td {
 }
 
 
-
-
 html, body {
   height: 100%;
 }
-
-
 .container {
   position: relative;
   min-height: 100%;
 }
-
-
 .header {
   background: #fff;
 }
-
+@media (min-width: 1600px) {
+  .container .header-inner {
+    width: 900px;
+  }
+}
 .header {
   margin-bottom: 25px;
   background-image: url("../image/banner-02.jpg");
@@ -555,11 +553,6 @@ html, body {
     margin: 0 auto;
     padding: 100px 0 70px;
     width: 700px;
-}
-@media (min-width: 1600px) {
-  .container .header-inner {
-    width: 900px;
-  }
 }
 .header-inner {
     position: relative;
@@ -1064,7 +1057,13 @@ html, body {
   text-align: center;
   width: 100%;
 }
+@media (min-width: 1600px) {
+  .container .footer-inner {
+    width: 900px;
+  }
+}
 /*页面底部结束*/
+
 
 .use-motion .post {
   opacity: 0;

@@ -6,7 +6,7 @@ var Account = mongoose.model('Account');
 
 module.exports = {
 	login: function (req, res, next) {
-		Account.findOne({email: req.body.email}, function(err, doc){
+		Account.findOne({email: String(req.body.email)}, function(err, doc){
 			if(err) console.log(err);
 			if(!doc) {
 				console.log("账号不存在");
@@ -14,7 +14,7 @@ module.exports = {
 					State: false,
 					Message: '账号不存在'
 				});
-			} else if(req.body.password === doc.password) {
+			} else if(String(req.body.password) === doc.password) {
 				console.log('登录成功');
 				var name = req.body.email;
 				var token = createToken(name);
@@ -37,15 +37,20 @@ module.exports = {
 		})
 	},
 	regist: function (req, res, next) {
-		let userRegister = new Account({
-			email: req.body.email,
-			phone: req.body.phone,
-			password: req.body.password
+		//关闭注册
+		res.json({
+			State: false,
+			Message: '用户名已存在'
+		});
+		/*let userRegister = new Account({
+			email: String(req.body.email),
+			phone: String(req.body.phone),
+			password: String(req.body.password)
 		});
 
 		userRegister.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
 
-		Account.findOne({email: userRegister.email}, (err, doc) => {
+		Account.findOne({email: String(userRegister.email)}, (err, doc) => {
 			if(err) console.log(err);
 			// 用户名已存在，不能注册
 			if(doc) {
@@ -63,6 +68,6 @@ module.exports = {
 					});
 				});
 			}
-		})
+		})*/
 	}
 }

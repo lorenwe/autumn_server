@@ -16,10 +16,10 @@ var mongoose =require('./config/mongoose.js')
 var db = mongoose();
 
 // https cert
-var SSLoptions = {
-  cert: fs.readFileSync('./cert/private.pem'),
-  key: fs.readFileSync('./cert/cert.key')
-};
+// var SSLoptions = {
+//   cert: fs.readFileSync('./cert/private.pem'),
+//   key: fs.readFileSync('./cert/cert.key')
+// };
 
 var app = express();
 
@@ -89,9 +89,9 @@ app.use(function(err, req, res, next) {
   }
 });
 
-var port = process.env.PORT || '80';
+var port = process.env.PORT || '8008';
 
-http.createServer(app).listen(80);
+http.createServer(app).listen(port);
 // https.createServer(SSLoptions, app).listen(443);
 
 
