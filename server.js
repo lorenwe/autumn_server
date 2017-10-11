@@ -89,7 +89,7 @@ app.use(function(err, req, res, next) {
   }
 });
 
-var port = process.env.PORT || '80';
+var port = process.env.PORT || '8008';
 
 http.createServer(app).listen(port);
 // https.createServer(SSLoptions, app).listen(443);
